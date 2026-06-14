@@ -2,35 +2,35 @@
   <img src="https://cloud.githubusercontent.com/assets/2059754/24601246/753a7f36-1858-11e7-9d6b-7a0e64fb27f7.png" alt="bash logo"/>
 </p>
 
-## Table of Contents
-  1. [Basic Operations](#1-basic-operations)  
-    1.1. [File Operations](#11-file-operations)  
-    1.2. [Text Operations](#12-text-operations)  
-    1.3. [Directory Operations](#13-directory-operations)  
-    1.4. [SSH, System Info & Network Operations](#14-ssh-system-info--network-operations)  
-    1.5. [Process Monitoring Operations](#15-process-monitoring-operations)
-  2. [Basic Shell Programming](#2-basic-shell-programming)  
+## Tabla de Contenidos
+  1. [Operaciones Básicas](#1-operaciones-básicas)  
+    1.1. [Operaciones con Archivos](#11-operaciones-con-archivos)  
+    1.2. [Operaciones de Texto](#12-operaciones-de-texto)  
+    1.3. [Operaciones de Directorio](#13-operaciones-de-directorio)  
+    1.4. [SSH, Información del Sistema y Red](#14-ssh-información-del-sistema-y-red)  
+    1.5. [Operaciones de Monitoreo de Procesos](#15-operaciones-de-monitoreo-de-procesos)
+  2. [Programación Básica en Shell](#2-programación-básica-en-shell)  
     2.1. [Variables](#21-variables)  
-    2.2. [Array](#22-array)  
-    2.3. [String Substitution](#23-string-substitution)  
-    2.4. [Other String Tricks](#24-other-string-tricks)  
-    2.5. [Functions](#25-functions)  
-    2.6. [Conditionals](#26-conditionals)  
-    2.7. [Loops](#27-loops)  
-    2.8. [Regex](#28-regex)  
-    2.9. [Pipes](#29-pipes)  
-  3. [Tricks](#3-tricks)  
-  4. [Debugging](#4-debugging)  
+    2.2. [Arreglos](#22-arreglos)  
+    2.3. [Sustitución de Cadenas](#23-sustitución-de-cadenas)  
+    2.4. [Otros Trucos con Cadenas](#24-otros-trucos-con-cadenas)  
+    2.5. [Funciones](#25-funciones)  
+    2.6. [Condicionales](#26-condicionales)  
+    2.7. [Bucles](#27-bucles)  
+    2.8. [Expresiones Regulares](#28-expresiones-regulares)  
+    2.9. [Tuberías (Pipes)](#29-tuberías-pipes)  
+  3. [Trucos](#3-trucos)  
+  4. [Depuración](#4-depuración)  
   5. [Multi-threading](#5-multi-threading)
 
-# 1. Basic Operations
+# 1. Operaciones Básicas
 
 ### a. `export`
-Displays all environment variables. If you want to get details of a specific variable, use `echo $VARIABLE_NAME`.  
+Muestra todas las variables de entorno. Si deseas ver el detalle de una variable específica, usa `echo $NOMBRE_VARIABLE`.  
 ```bash
 export
 ```
-Example:
+Ejemplo:
 ```bash
 $ export
 AWS_HOME=/Users/adnanadnan/.aws
@@ -43,42 +43,42 @@ $ echo $AWS_HOME
 ```
 
 ### b. `whatis`
-whatis shows description for user commands, system calls, library functions, and others in manual pages
+`whatis` muestra la descripción de comandos de usuario, llamadas al sistema, funciones de biblioteca y otros elementos en las páginas del manual.
 ```bash
-whatis something
+whatis algo
 ```
-Example:
+Ejemplo:
 ```bash
 $ whatis bash
 bash (1)             - GNU Bourne-Again SHell
 ```
 
 ### c. `whereis`
-whereis searches for executables, source files, and manual pages using a database built by system automatically.
+`whereis` busca ejecutables, archivos fuente y páginas del manual usando una base de datos construida automáticamente por el sistema.
 ```bash
-whereis name
+whereis nombre
 ```
-Example:
+Ejemplo:
 ```bash
 $ whereis php
 /usr/bin/php
 ```
 
 ### d. `which`
-which searches for executables in the directories specified by the environment variable PATH. This command will print the full path of the executable(s).
+`which` busca ejecutables en los directorios especificados por la variable de entorno PATH. Este comando imprime la ruta completa del ejecutable encontrado.
 ```bash
-which program_name 
+which nombre_programa
 ```
-Example:
+Ejemplo:
 ```bash
 $ which php
 /c/xampp/php/php
 ```
 
-### e. clear
-Clears content on window.
+### e. `clear`
+Limpia el contenido de la ventana de la terminal.
 
-## 1.1. File Operations
+## 1.1. Operaciones con Archivos
 <table>
    <tr>
       <td><a href="#a-cat">cat</a></td>
@@ -108,100 +108,101 @@ Clears content on window.
 </table>
 
 ### a. `cat`
-It can be used for the following purposes under UNIX or Linux.  
-* Display text files on screen
-* Copy text files  
-* Combine text files  
-* Create new text files  
+Puede usarse para los siguientes propósitos en UNIX o Linux:
+* Mostrar archivos de texto en pantalla
+* Copiar archivos de texto  
+* Combinar archivos de texto  
+* Crear nuevos archivos de texto  
 ```bash
-cat filename
-cat file1 file2 
-cat file1 file2 > newcombinedfile
-cat < file1 > file2 #copy file1 to file2
+cat archivo
+cat archivo1 archivo2
+cat archivo1 archivo2 > nuevo_archivo_combinado
+cat < archivo1 > archivo2 #copia archivo1 en archivo2
 ```
 
 ### b. `chmod`
-The chmod command stands for "change mode" and allows you to change the read, write, and execute permissions on your files and folders. For more information on this command check this [link](https://ss64.com/bash/chmod.html).
+El comando `chmod` significa "change mode" (cambiar modo) y permite modificar los permisos de lectura, escritura y ejecución de tus archivos y carpetas. Para más información consulta este [enlace](https://ss64.com/bash/chmod.html).
 ```bash
-chmod -options filename
+chmod -opciones archivo
 ```
 
 ### c. `chown`
-The chown command stands for "change owner", and allows you to change the owner of a given file or folder, which can be a user and a group. Basic usage is simple forward first comes the user (owner), and then the group, delimited by a colon.
+El comando `chown` significa "change owner" (cambiar propietario) y permite cambiar el dueño de un archivo o carpeta, que puede ser un usuario y un grupo. El uso básico es sencillo: primero va el usuario (propietario) y luego el grupo, separados por dos puntos.
 ```bash
-chown -options user:group filename
+chown -opciones usuario:grupo archivo
 ```
 
 ### d. `cp`
-Copies a file from one location to other.  
+Copia un archivo de una ubicación a otra.  
 ```bash
-cp filename1 filename2
+cp archivo1 archivo2
 ```
-Where `filename1` is the source path to the file and `filename2` is the destination path to the file.
+Donde `archivo1` es la ruta de origen y `archivo2` es la ruta de destino.
 
 ### e. `diff`
-Compares files, and lists their differences.  
+Compara archivos y lista sus diferencias.  
 ```bash
-diff filename1 filename2
+diff archivo1 archivo2
 ```
 
 ### f. `file`
-Determine file type.  
+Determina el tipo de un archivo.  
 ```bash
-file filename
+file archivo
 ```
-Example:
+Ejemplo:
 ```bash
 $ file index.html
  index.html: HTML document, ASCII text
 ```
+
 ### g. `find`
-Find files in directory
+Busca archivos dentro de un directorio.
 ```bash
-find directory options pattern
+find directorio opciones patrón
 ```
-Example:
+Ejemplo:
 ```bash
 $ find . -name README.md
-$ find /home/user1 -name '*.png'
+$ find /home/usuario1 -name '*.png'
 ```
 
 ### h. `gunzip`
-Un-compresses files compressed by gzip.  
+Descomprime archivos comprimidos con gzip.  
 ```bash
-gunzip filename
+gunzip archivo
 ```
 
 ### i. `gzcat`
-Lets you look at gzipped file without actually having to gunzip it.  
+Permite ver el contenido de un archivo comprimido con gzip sin necesidad de descomprimirlo.  
 ```bash
-gzcat filename
+gzcat archivo
 ```
 
 ### j. `gzip`
-Compresses files.  
+Comprime archivos.  
 ```bash
-gzip filename
+gzip archivo
 ```
 
 ### k. `head`
-Outputs the first 10 lines of file  
+Muestra las primeras 10 líneas de un archivo.  
 ```bash
-head filename
+head archivo
 ```
 
 ### l. `less`
-Shows the contents of a file or a command output, one page at a time. It is similar to [more](#q-more), but has more advanced features and allows you to navigate both forward and backward through the file.  
+Muestra el contenido de un archivo o la salida de un comando, una página a la vez. Es similar a [more](#q-more), pero tiene funciones más avanzadas y permite navegar tanto hacia adelante como hacia atrás en el archivo.  
 ```bash
-less filename
+less archivo
 ```
 
 ### m. `lpq`
-Check out the printer queue.  
+Consulta la cola de impresión.  
 ```bash
 lpq
 ```
-Example:
+Ejemplo:
 ```bash
 $ lpq
 Rank    Owner   Job     File(s)                         Total Size
@@ -210,23 +211,23 @@ active  adnanad 59      demo                            399360 bytes
 ```
 
 ### n. `lpr`
-Print the file.  
+Imprime un archivo.  
 ```bash
-lpr filename
+lpr archivo
 ```
 
 ### o. `lprm`
-Remove something from the printer queue.  
+Elimina un trabajo de la cola de impresión.  
 ```bash
-lprm jobnumber
+lprm número_de_trabajo
 ```
 
 ### p. `ls`
-Lists your files. `ls` has many options: `-l` lists files in 'long format', which contains the exact size of the file, who owns the file, who has the right to look at it, and when it was last modified. `-a` lists all files, including hidden files. For more information on this command check this [link](https://ss64.com/bash/ls.html).  
+Lista tus archivos. `ls` tiene muchas opciones: `-l` lista los archivos en "formato largo", que incluye el tamaño exacto, el propietario, los permisos y la última fecha de modificación. `-a` lista todos los archivos, incluyendo los ocultos. Para más información consulta este [enlace](https://ss64.com/bash/ls.html).  
 ```bash
-ls option
+ls opción
 ```
-Example:
+Ejemplo:
 <pre>
 $ ls -la
 rwxr-xr-x   33 adnan  staff    1122 Mar 27 18:44 .
@@ -240,48 +241,48 @@ drwxr-xr-x  17 adnan  staff     578 Mar 27 23:36 .git
 </pre>
 
 ### q. `more`
-Shows the first part of a file (move with space and type q to quit).  
+Muestra la primera parte de un archivo (avanza con la barra espaciadora y escribe `q` para salir).  
 ```bash
-more filename
+more archivo
 ```
 
 ### r. `mv`
-Moves a file from one location to other.  
+Mueve un archivo de una ubicación a otra.  
 ```bash
-mv filename1 filename2
+mv archivo1 archivo2
 ```
-Where `filename1` is the source path to the file and `filename2` is the destination path to the file.
+Donde `archivo1` es la ruta de origen y `archivo2` es la ruta de destino.
 
-Also it can be used for rename a file.
+También se puede usar para renombrar un archivo:
 ```bash
-mv old_name new_name
+mv nombre_viejo nombre_nuevo
 ```
 
 ### s. `rm`
-Removes a file. Using this command on a directory gives you an error.
-`rm: directory: is a directory`
-To remove a directory you have to pass `-r` which will remove the content of the directory recursively. Optionally you can use `-f` flag to force the deletion i.e. without any confirmations etc.
+Elimina un archivo. Usar este comando en un directorio genera el error:  
+`rm: directory: is a directory`  
+Para eliminar un directorio debes usar `-r`, que elimina el contenido de forma recursiva. Opcionalmente puedes agregar `-f` para forzar la eliminación sin pedir confirmación.
 ```bash
-rm filename
+rm archivo
 ```
 
 ### t. `tail`
-Outputs the last 10 lines of file. Use `-f` to output appended data as the file grows.  
+Muestra las últimas 10 líneas de un archivo. Usa `-f` para mostrar el contenido en tiempo real mientras el archivo crece.  
 ```bash
-tail filename
+tail archivo
 ```
 
 ### u. `touch`
-Updates access and modification time stamps of your file. If it doesn't exists, it'll be created.
+Actualiza las marcas de tiempo de acceso y modificación de un archivo. Si el archivo no existe, lo crea.
 ```bash
-touch filename
+touch archivo
 ```
-Example:
+Ejemplo:
 ```bash
-$ touch trick.md
+$ touch truco.md
 ```
 
-## 1.2. Text Operations
+## 1.2. Operaciones de Texto
 
 <table>
     <tr>
@@ -304,13 +305,13 @@ $ touch trick.md
 </table>
 
 ### a. `awk`
-awk is the most useful command for handling text files. It operates on an entire file line by line. By default it uses whitespace to separate the fields. The most common syntax for awk command is
+`awk` es el comando más útil para manipular archivos de texto. Opera sobre un archivo completo, línea por línea. Por defecto usa espacios en blanco para separar los campos. La sintaxis más común es:
 
 ```bash
-awk '/search_pattern/ { action_to_take_if_pattern_matches; }' file_to_parse
+awk '/patrón_de_búsqueda/ { acción_si_el_patrón_coincide; }' archivo_a_analizar
 ```
 
-Lets take following file `/etc/passwd`. Here's the sample data that this file contains:
+Tomemos el archivo `/etc/passwd` como ejemplo. Aquí hay una muestra de su contenido:
 ```
 root:x:0:0:root:/root:/usr/bin/zsh
 daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
@@ -318,11 +319,11 @@ bin:x:2:2:bin:/bin:/usr/sbin/nologin
 sys:x:3:3:sys:/dev:/usr/sbin/nologin
 sync:x:4:65534:sync:/bin:/bin/sync
 ```
-So now lets get only username from this file. Where `-F` specifies that on which base we are going to separate the fields. In our case it's `:`. `{ print $1 }` means print out the first matching field.
+Ahora obtengamos solo el nombre de usuario de este archivo. `-F` especifica el delimitador de campos, en este caso `:`. `{ print $1 }` significa imprimir el primer campo coincidente.
 ```bash
 awk -F':' '{ print $1 }' /etc/passwd
 ```
-After running the above command you will get following output.
+Al ejecutar el comando anterior obtendrás:
 ```
 root
 daemon
@@ -330,49 +331,49 @@ bin
 sys
 sync
 ```
-For more detail on how to use `awk`, check following [link](https://www.cyberciti.biz/faq/bash-scripting-using-awk).
+Para más detalles sobre `awk`, consulta este [enlace](https://www.cyberciti.biz/faq/bash-scripting-using-awk).
 
 
 ### b. `cut`
-Remove sections from each line of files
+Elimina secciones de cada línea de un archivo.
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 red riding hood went to the park to play
 ```
 
-*show me columns 2 , 7 , and 9 with a space as a separator*
+*mostrar las columnas 2, 7 y 9 usando espacio como separador*
 ```bash
-cut -d " " -f2,7,9 example.txt
+cut -d " " -f2,7,9 ejemplo.txt
 ```
 ```bash
 riding park play
 ```
 
 ### c. `echo`
-Display a line of text
+Muestra una línea de texto.
 
-*display "Hello World"*
+*mostrar "Hola Mundo"*
 ```bash
-echo Hello World
+echo Hola Mundo
 ```
 ```bash
-Hello World
+Hola Mundo
 ```
 
-*display "Hello World" with newlines between words*
+*mostrar "Hola Mundo" con saltos de línea entre palabras*
 ```bash
-echo -ne "Hello\nWorld\n"
+echo -ne "Hola\nMundo\n"
 ```
 ```bash
-Hello
-World
+Hola
+Mundo
 ```
 
 ### d. `egrep`
-Print lines matching a pattern - Extended Expression (alias for: 'grep -E')
+Imprime líneas que coinciden con un patrón — Expresión Extendida (equivalente a: `grep -E`)
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 Lorem ipsum
 dolor sit amet, 
@@ -395,11 +396,11 @@ ipsum dolor sit
 amet.
 ```
 
-*display lines that have either "Lorem" or "dolor" in them.*
+*mostrar las líneas que contienen "Lorem" o "dolor"*
 ```bash
-egrep '(Lorem|dolor)' example.txt
-or
-grep -E '(Lorem|dolor)' example.txt
+egrep '(Lorem|dolor)' ejemplo.txt
+# o bien:
+grep -E '(Lorem|dolor)' ejemplo.txt
 ```
 ```bash
 Lorem ipsum
@@ -411,9 +412,9 @@ ipsum dolor sit
 ```
 
 ### e. `fgrep`
-Print lines matching a pattern - FIXED pattern matching  (alias for: 'grep -F')
+Imprime líneas que coinciden con un patrón — coincidencia de patrón FIJO (equivalente a: `grep -F`)
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 Lorem ipsum
 dolor sit amet,
@@ -437,27 +438,27 @@ ipsum dolor sit
 amet.
 ```
 
-*Find the exact string '(Lorem|dolor)' in example.txt*
+*buscar la cadena literal '(Lorem|dolor)' en ejemplo.txt*
 ```bash
-fgrep '(Lorem|dolor)' example.txt
-or
-grep -F '(Lorem|dolor)' example.txt
+fgrep '(Lorem|dolor)' ejemplo.txt
+# o bien:
+grep -F '(Lorem|dolor)' ejemplo.txt
 ```
 ```bash
 foo (Lorem|dolor) 
 ```
 
 ### f. `fmt`
-Simple optimal text formatter
+Formateador de texto simple y óptimo.
 
-*example: example.txt (1 line)*
+*ejemplo: ejemplo.txt (1 línea)*
 ```bash
 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 ```
 
-*output the lines of example.txt to 20 character width*
+*mostrar las líneas de ejemplo.txt con un ancho de 20 caracteres*
 ```bash
-cat example.txt | fmt -w 20
+cat ejemplo.txt | fmt -w 20
 ```
 ```bash
 Lorem ipsum
@@ -482,27 +483,27 @@ amet.
 ```
 
 ### g. `grep`
-Looks for text inside files. You can use grep to search for lines of text that match one or many regular expressions, and outputs only the matching lines.  
+Busca texto dentro de archivos. Puedes usar `grep` para buscar líneas que coincidan con una o más expresiones regulares, y muestra solo las líneas que coinciden.  
 ```bash
-grep pattern filename
+grep patrón archivo
 ```
-Example:
+Ejemplo:
 ```bash
 $ grep admin /etc/passwd
 _kadmin_admin:*:218:-2:Kerberos Admin Service:/var/empty:/usr/bin/false
 _kadmin_changepw:*:219:-2:Kerberos Change Password Service:/var/empty:/usr/bin/false
 _krb_kadmin:*:231:-2:Open Directory Kerberos Admin Service:/var/empty:/usr/bin/false
 ```
-You can also force grep to ignore word case by using `-i` option. `-r` can be used to search all files under the specified directory, for example:
+También puedes hacer que `grep` ignore mayúsculas y minúsculas con la opción `-i`. `-r` permite buscar en todos los archivos de un directorio, por ejemplo:
 ```bash
 $ grep -r admin /etc/
 ```
-And `-w` to search for words only. For more detail on `grep`, check following [link](https://www.cyberciti.biz/faq/grep-in-bash).
+Y `-w` para buscar palabras completas. Para más detalles sobre `grep`, consulta este [enlace](https://www.cyberciti.biz/faq/grep-in-bash).
 
 ### h. `nl`
-Number lines of files
+Numera las líneas de un archivo.
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 Lorem ipsum
 dolor sit amet,
@@ -525,9 +526,9 @@ ipsum dolor sit
 amet.
 ```
 
-*show example.txt with line numbers*
+*mostrar ejemplo.txt con números de línea*
 ```bash
-nl -s". " example.txt 
+nl -s". " ejemplo.txt 
 ```
 ```bash
      1. Lorem ipsum
@@ -552,33 +553,33 @@ nl -s". " example.txt
 ```
 
 ### i. `sed`
-Stream editor for filtering and transforming text
+Editor de flujo para filtrar y transformar texto.
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 Hello This is a Test 1 2 3 4
 ``` 
 
-*replace all spaces with hyphens*
+*reemplazar todos los espacios con guiones*
 ```bash
-sed 's/ /-/g' example.txt
+sed 's/ /-/g' ejemplo.txt
 ```
 ```bash
 Hello-This-is-a-Test-1-2-3-4
 ```
 
-*replace all digits with "d"*
+*reemplazar todos los dígitos con "d"*
 ```bash
-sed 's/[0-9]/d/g' example.txt
+sed 's/[0-9]/d/g' ejemplo.txt
 ```
 ```bash
 Hello This is a Test d d d d
 ```
 
 ### j. `sort`
-Sort lines of text files
+Ordena líneas de archivos de texto.
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 f
 b
@@ -589,9 +590,9 @@ e
 d
 ```
 
-*sort example.txt*
+*ordenar ejemplo.txt*
 ```bash
-sort example.txt
+sort ejemplo.txt
 ```
 ```bash
 a
@@ -603,9 +604,9 @@ f
 g
 ```
 
-*randomize a sorted example.txt*
+*ordenar ejemplo.txt de forma aleatoria*
 ```bash
-sort example.txt | sort -R
+sort ejemplo.txt | sort -R
 ```
 ```bash
 b
@@ -618,24 +619,24 @@ e
 ```
 
 ### k. `tr`
-Translate or delete characters
+Traduce o elimina caracteres.
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 Hello World Foo Bar Baz!
 ```
 
-*take all lower case letters and make them upper case*
+*convertir todas las letras minúsculas a mayúsculas*
 ```bash
-cat example.txt | tr 'a-z' 'A-Z' 
+cat ejemplo.txt | tr 'a-z' 'A-Z' 
 ```
 ```bash
 HELLO WORLD FOO BAR BAZ!
 ```
 
-*take all spaces and make them into newlines*
+*convertir todos los espacios en saltos de línea*
 ```bash
-cat example.txt | tr ' ' '\n'
+cat ejemplo.txt | tr ' ' '\n'
 ```
 ```bash
 Hello
@@ -646,9 +647,9 @@ Baz!
 ```
 
 ### l. `uniq`
-Report or omit repeated lines
+Reporta u omite líneas repetidas.
 
-*example.txt*
+*ejemplo.txt*
 ```bash
 a
 a
@@ -660,9 +661,9 @@ d
 c
 ```
 
-*show only unique lines of example.txt (first you need to sort it, otherwise it won't see the overlap)*
+*mostrar solo las líneas únicas de ejemplo.txt (primero debes ordenarlo, de lo contrario no detectará los duplicados)*
 ```bash
-sort example.txt | uniq
+sort ejemplo.txt | uniq
 ```
 ```bash
 a
@@ -671,9 +672,9 @@ c
 d
 ```
 
-*show the unique items for each line, and tell me how many instances it found*
+*mostrar los elementos únicos por línea e indicar cuántas veces aparece cada uno*
 ```bash
-sort example.txt | uniq -c
+sort ejemplo.txt | uniq -c
 ```
 ```bash
     3 a
@@ -683,18 +684,18 @@ sort example.txt | uniq -c
 ```
 
 ### m. `wc`
-Tells you how many lines, words and characters there are in a file.  
+Indica cuántas líneas, palabras y caracteres tiene un archivo.  
 ```bash
-wc filename
+wc archivo
 ```
-Example:
+Ejemplo:
 ```bash
 $ wc demo.txt
 7459   15915  398400 demo.txt
 ```
-Where `7459` is lines, `15915` is words and `398400` is characters.
+Donde `7459` son líneas, `15915` son palabras y `398400` son caracteres.
 
-## 1.3. Directory Operations
+## 1.3. Operaciones de Directorio
 
 <table>
    <tr>
@@ -705,43 +706,42 @@ Where `7459` is lines, `15915` is words and `398400` is characters.
 </table>
 
 ### a. `cd`
-Moves you from one directory to other. Running this  
+Te mueve de un directorio a otro. Ejecutar simplemente:
 ```bash
 $ cd
 ```
-moves you to home directory. This command accepts an optional `dirname`, which moves you to that directory.
+te lleva al directorio de inicio (home). El comando acepta un `nombre_de_directorio` opcional al que deseas ir.
 ```bash
-cd dirname
+cd nombre_de_directorio
 ```
-Switch to the previous working directory
+Volver al directorio de trabajo anterior:
 ```bash
 cd -
 ```
 
 ### b. `mkdir`
-Makes a new directory.  
+Crea un nuevo directorio.  
 ```bash
-mkdir dirname
+mkdir nombre_directorio
 ```
-You can use this to create multiple directories at once within your current directory.
+Puedes crear múltiples directorios a la vez dentro del directorio actual:
 ```bash
-mkdir 1stDirectory 2ndDirectory 3rdDirectory
+mkdir primerDirectorio segundoDirectorio tercerDirectorio
 ```
-You can also use this to create parent directories at the same time with the -p (or --parents) flag. For instance, if you wanted a directory named 'project1' in another subdirectory at '/samples/bash/projects/', you could run:
+También puedes crear directorios padre al mismo tiempo con la opción `-p` (o `--parents`). Por ejemplo, si deseas crear un directorio llamado 'proyecto1' dentro de `/ejemplos/bash/proyectos/`, puedes ejecutar:
 ```bash 
-mkdir -p /samples/bash/projects/project1
-mkdir --parents /samples/bash/projects/project1
+mkdir -p /ejemplos/bash/proyectos/proyecto1
+mkdir --parents /ejemplos/bash/proyectos/proyecto1
 ```
-Both commands above will do the same thing.
-If any of these directories did no already exist, they would be created as well.
+Ambos comandos hacen lo mismo. Si alguno de esos directorios no existe, también se creará.
 
 ### c. `pwd`
-Tells you which directory you currently are in.  
+Muestra el directorio en el que te encuentras actualmente.  
 ```bash
 pwd
 ```
 
-## 1.4. SSH, System Info & Network Operations
+## 1.4. SSH, Información del Sistema y Red
 
 <table>
    <tr>
@@ -773,165 +773,166 @@ pwd
       <td><a href="#v-wget">wget</a></td>
       <td><a href="#w-whoami">whoami</a></td>
       <td><a href="#x-whois">whois</a></td>
-      <td><a href="#y-rsync">sync</a></td>
+      <td><a href="#y-rsync">rsync</a></td>
       <td><a href="#z-curl">curl</a></td>
    </tr>
 </table>
 
 ### a. `bg`
-Lists stopped or background jobs; resume a stopped job in the background.
+Lista los trabajos detenidos o en segundo plano; reanuda un trabajo detenido en segundo plano.
 
 ### b. `cal`
-Shows the month's calendar.
+Muestra el calendario del mes actual.
 
 ### c. `date`
-Shows the current date and time.
+Muestra la fecha y hora actuales.
 
 ### d. `df`
-Shows disk usage.
+Muestra el uso del disco.
 
 ### e. `dig`
-Gets DNS information for domain.  
+Obtiene información DNS de un dominio.  
 ```bash
-dig domain
+dig dominio
 ```
 
 ### f. `du`
-Shows the disk usage of files or directories. For more information on this command check this [link](http://www.linfo.org/du.html)
+Muestra el uso de disco de archivos o directorios. Para más información consulta este [enlace](http://www.linfo.org/du.html).
 ```bash
-du [option] [filename|directory]
+du [opción] [archivo|directorio]
 ```
-Options:
-- `-h` (human readable) Displays output it in kilobytes (K), megabytes (M) and gigabytes (G).
-- `-s` (supress or summarize) Outputs total disk space of a directory and supresses reports for subdirectories. 
+Opciones:
+- `-h` (human readable — legible para humanos) Muestra el resultado en kilobytes (K), megabytes (M) y gigabytes (G).
+- `-s` (summarize — resumir) Muestra el espacio total de disco de un directorio y omite los reportes de subdirectorios.
 
-Example:
+Ejemplo:
 ```bash
-du -sh pictures
-1.4M pictures
+du -sh fotos
+1.4M fotos
 ```
 
 ### g. `fg`
-Brings the most recent job in the foreground.
+Trae el trabajo más reciente al primer plano.
 
 ### h. `finger`
-Displays information about user.  
+Muestra información sobre un usuario.  
 ```bash
-finger username
+finger nombre_usuario
 ```
+
 ### i. `jobs`
-Lists the jobs running in the background, giving the job number.
+Lista los trabajos que se ejecutan en segundo plano, indicando el número de trabajo.
 
 ### j. `last`
-Lists your last logins of specified user.  
+Lista los últimos inicios de sesión del usuario especificado.  
 ```bash
-last yourUsername
+last tu_nombre_usuario
 ```
 
 ### k. `man`
-Shows the manual for specified command.  
+Muestra el manual del comando especificado.  
 ```bash
-man command
+man comando
 ```
 
 ### l. `passwd`
-Allows the current logged user to change their password.
+Permite al usuario actualmente conectado cambiar su contraseña.
 
 ### m. `ping`
-Pings host and outputs results.  
+Hace ping a un host y muestra los resultados.  
 ```bash
 ping host
 ```
 
 ### n. `ps`
-Lists your processes.  
+Lista tus procesos.  
 ```bash
-ps -u yourusername
+ps -u tu_nombre_usuario
 ```
-Use the flags ef. e for every process and f for full listing. 
+Usa las opciones `ef`: `e` para todos los procesos y `f` para listado completo.
 ```bash
 ps -ef
 ```
 
 ### o. `quota`
-Shows what your disk quota is.  
+Muestra tu cuota de disco.  
 ```bash
 quota -v
 ```
 
 ### p. `scp`
-Transfer files between a local host and a remote host or between two remote hosts.
+Transfiere archivos entre un host local y uno remoto, o entre dos hosts remotos.
 
-*copy from local host to remote host*
+*copiar del host local al host remoto*
 ```bash
-scp source_file user@host:directory/target_file
+scp archivo_origen usuario@host:directorio/archivo_destino
 ```
-*copy from remote host to local host*
+*copiar del host remoto al host local*
 ```bash
-scp user@host:directory/source_file target_file
-scp -r user@host:directory/source_folder target_folder
+scp usuario@host:directorio/archivo_origen archivo_destino
+scp -r usuario@host:directorio/carpeta_origen carpeta_destino
 ```
-This command also accepts an option `-P` that can be used to connect to specific port.  
+Este comando también acepta la opción `-P` para conectarse a un puerto específico.  
 ```bash
-scp -P port user@host:directory/source_file target_file
+scp -P puerto usuario@host:directorio/archivo_origen archivo_destino
 ```
 
 ### q. `ssh`
-ssh (SSH client) is a program for logging into and executing commands on a remote machine.  
+`ssh` (cliente SSH) es un programa para iniciar sesión y ejecutar comandos en una máquina remota.  
 ```bash
-ssh user@host
+ssh usuario@host
 ```
-This command also accepts an option `-p` that can be used to connect to specific port.  
+También acepta la opción `-p` para conectarse a un puerto específico.  
 ```bash
-ssh -p port user@host
+ssh -p puerto usuario@host
 ```
 
 ### r. `top`
-Displays your currently active processes.
+Muestra los procesos activos en este momento.
 
 ### s. `uname`
-Shows kernel information.  
+Muestra información del kernel.  
 ```bash
 uname -a
 ```
 
 ### t. `uptime`
-Shows current uptime.
+Muestra el tiempo que lleva encendido el sistema.
 
 ### u. `w`
-Displays who is online.
+Muestra quién está conectado actualmente.
 
 ### v. `wget`
-Downloads file.  
+Descarga un archivo.  
 ```bash
-wget file
+wget archivo
 ```
 
 ### w. `whoami`
-Return current logged in username.
+Retorna el nombre del usuario actualmente conectado.
 
 ### x. `whois`
-Gets whois information for domain.  
+Obtiene información whois de un dominio.  
 ```bash
-whois domain
+whois dominio
 ```
 
 ### y. `rsync`
-Does the same job as `scp` command, but transfers only changed files. Useful when transferring the same folder to/from server multiple times.
+Hace el mismo trabajo que `scp`, pero solo transfiere los archivos que han cambiado. Útil cuando se transfiere la misma carpeta hacia/desde un servidor múltiples veces.
 ```bash
-rsync source_folder user@host:target_folder
-rsync user@host:target_folder target_folder
+rsync carpeta_origen usuario@host:carpeta_destino
+rsync usuario@host:carpeta_destino carpeta_local
 ```
 
 ### z. `curl`
-Curl is a command-line tool for requesting or sending data using URL syntax. Usefull on systems where you only have terminal available for making various requests.
+`curl` es una herramienta de línea de comandos para solicitar o enviar datos usando sintaxis URL. Muy útil en sistemas donde solo tienes la terminal disponible para hacer distintos tipos de solicitudes.
 ```bash
 curl url
 ```
-Use  `-X` or `--request` to specify which method you would like invoke (GET, POST, DELETE, ...).
-Use `-d <data>` or `--data <data>` to POST data on given URL.
+Usa `-X` o `--request` para especificar el método HTTP que deseas invocar (GET, POST, DELETE, ...).  
+Usa `-d <datos>` o `--data <datos>` para enviar datos vía POST a la URL indicada.
 
-## 1.5. Process Monitoring Operations
+## 1.5. Operaciones de Monitoreo de Procesos
 
 <table>
    <tr>
@@ -943,37 +944,36 @@ Use `-d <data>` or `--data <data>` to POST data on given URL.
 </table>
 
 ### a. `kill`
-Kills (ends) the processes with the ID you gave.  
+Termina (mata) el proceso con el ID indicado.  
 ```bash
 kill PID
 ```
 
 ### b. `killall`
-Kill all processes with the name.  
+Termina todos los procesos con el nombre indicado.  
 ```bash
-killall processname
+killall nombre_proceso
 ```
 
-### c. &
-The `&` symbol instructs the command to run as a background process in a subshell.
+### c. `&`
+El símbolo `&` indica al comando que se ejecute como proceso en segundo plano dentro de un subshell.
 ```bash
-command &
+comando &
 ```
 
 ### d. `nohup`
-nohup stands for "No Hang Up". This allows to run command/process or shell script that can continue running in the background after you log out from a shell.
+`nohup` significa "No Hang Up" (no colgar). Permite ejecutar un comando, proceso o script de shell que continúa corriendo en segundo plano incluso después de cerrar sesión en el shell.
 ```bash
-nohup command
+nohup comando
 ```
-Combine it with `&` to create background processes 
+Combínalo con `&` para crear procesos en segundo plano:
 ```bash
-nohup command &
+nohup comando &
 ```
 
-# 2. Basic Shell Programming
+# 2. Programación Básica en Shell
 
-
-The first line that you will write in bash script files is called `shebang`. This line in any script determines the script's ability to be executed like a standalone executable without typing sh, bash, python, php etc beforehand in the terminal.
+La primera línea que escribirás en un script de bash se llama `shebang`. Esta línea determina la capacidad del script de ejecutarse como un programa independiente sin necesidad de escribir `sh`, `bash`, `python`, `php`, etc. antes en la terminal.
 
 ```bash
 #!/usr/bin/env bash
@@ -981,255 +981,257 @@ The first line that you will write in bash script files is called `shebang`. Thi
 
 ## 2.1. Variables
 
-Creating variables in bash is similar to other languages. There are no data types. A variable in bash can contain a number, a character, a string of characters, etc. You have no need to declare a variable, just assigning a value to its reference will create it.
+Crear variables en bash es similar a otros lenguajes. No existen tipos de datos. Una variable en bash puede contener un número, un carácter, una cadena de caracteres, etc. No necesitas declarar una variable; simplemente asignarle un valor la crea.
 
-Example:
+Ejemplo:
 ```bash
-str="hello world"
+str="hola mundo"
 ```
 
-The above line creates a variable `str` and assigns "hello world" to it. The value of variable is retrieved by putting the `$` in the beginning of variable name.
+La línea anterior crea la variable `str` y le asigna "hola mundo". El valor de la variable se obtiene anteponiendo `$` al nombre de la variable.
 
-Example:
+Ejemplo:
 ```bash
-echo $str   # hello world
-```
-## 2.2. Array
-Like other languages bash has also arrays. An array is a variable containing multiple values. There's no maximum limit on the size of array. Arrays in bash are zero based. The first element is indexed with element 0. There are several ways for creating arrays in bash which are given below.
-
-Examples:
-```bash
-array[0]=val
-array[1]=val
-array[2]=val
-array=([2]=val [0]=val [1]=val)
-array=(val val val)
-```
-To display a value at specific index use following syntax:
-
-```bash
-${array[i]}     # where i is the index
+echo $str   # hola mundo
 ```
 
-If no index is supplied, array element 0 is assumed. To find out how many values there are in the array use the following syntax:
+## 2.2. Arreglos
+
+Al igual que otros lenguajes, bash también tiene arreglos (arrays). Un arreglo es una variable que contiene múltiples valores. No hay límite máximo en el tamaño de un arreglo. Los arreglos en bash son de base cero; el primer elemento se indexa con el número 0. Hay varias formas de crear arreglos en bash:
+
+Ejemplos:
+```bash
+arreglo[0]=val
+arreglo[1]=val
+arreglo[2]=val
+arreglo=([2]=val [0]=val [1]=val)
+arreglo=(val val val)
+```
+Para mostrar el valor en un índice específico usa la siguiente sintaxis:
 
 ```bash
-${#array[@]}
+${arreglo[i]}     # donde i es el índice
 ```
 
-Bash has also support for the ternary conditions. Check some examples below.
+Si no se proporciona un índice, se asume el elemento 0. Para saber cuántos valores hay en el arreglo usa:
 
 ```bash
-${varname:-word}    # if varname exists and isn't null, return its value; otherwise return word
-${varname:=word}    # if varname exists and isn't null, return its value; otherwise set it word and then return its value
-${varname:+word}    # if varname exists and isn't null, return word; otherwise return null
-${varname:offset:length}    # performs substring expansion. It returns the substring of $varname starting at offset and up to length characters
+${#arreglo[@]}
 ```
 
-## 2.3 String Substitution
-
-Check some of the syntax on how to manipulate strings
+Bash también soporta condiciones ternarias. Algunos ejemplos:
 
 ```bash
-${variable#pattern}         # if the pattern matches the beginning of the variable's value, delete the shortest part that matches and return the rest
-${variable##pattern}        # if the pattern matches the beginning of the variable's value, delete the longest part that matches and return the rest
-${variable%pattern}         # if the pattern matches the end of the variable's value, delete the shortest part that matches and return the rest
-${variable%%pattern}        # if the pattern matches the end of the variable's value, delete the longest part that matches and return the rest
-${variable/pattern/string}  # the longest match to pattern in variable is replaced by string. Only the first match is replaced
-${variable//pattern/string} # the longest match to pattern in variable is replaced by string. All matches are replaced
-${#varname}     # returns the length of the value of the variable as a character string
+${nombre_var:-palabra}          # si nombre_var existe y no es nulo, retorna su valor; si no, retorna palabra
+${nombre_var:=palabra}          # si nombre_var existe y no es nulo, retorna su valor; si no, lo define como palabra y lo retorna
+${nombre_var:+palabra}          # si nombre_var existe y no es nulo, retorna palabra; si no, retorna nulo
+${nombre_var:desplazamiento:longitud}  # realiza expansión de subcadena: retorna la subcadena de $nombre_var que comienza en desplazamiento y tiene longitud caracteres
 ```
 
-## 2.4. Other String Tricks
+## 2.3. Sustitución de Cadenas
 
-Bash has multiple shorthand tricks for doing various things to strings.
+Algunas sintaxis para manipular cadenas:
 
 ```bash
-${variable,,}    #this converts every letter in the variable to lowercase
-${variable^^}    #this converts every letter in the variable to uppercase
-
-${variable:2:8}  #this returns a substring of a string, starting at the character at the 2 index(strings start at index 0, so this is the 3rd character),
-                 #the substring will be 8 characters long, so this would return a string made of the 3rd to the 11th characters.
+${variable#patrón}          # si el patrón coincide con el inicio del valor de la variable, elimina la parte más corta que coincide y retorna el resto
+${variable##patrón}         # si el patrón coincide con el inicio del valor de la variable, elimina la parte más larga que coincide y retorna el resto
+${variable%patrón}          # si el patrón coincide con el final del valor de la variable, elimina la parte más corta que coincide y retorna el resto
+${variable%%patrón}         # si el patrón coincide con el final del valor de la variable, elimina la parte más larga que coincide y retorna el resto
+${variable/patrón/cadena}   # la coincidencia más larga del patrón en la variable es reemplazada por cadena. Solo se reemplaza la primera coincidencia
+${variable//patrón/cadena}  # la coincidencia más larga del patrón en la variable es reemplazada por cadena. Se reemplazan todas las coincidencias
+${#nombre_var}              # retorna la longitud del valor de la variable como una cadena de caracteres
 ```
 
-Here are some handy pattern matching tricks
+## 2.4. Otros Trucos con Cadenas
+
+Bash tiene múltiples atajos para realizar distintas operaciones con cadenas.
+
 ```bash
-if [[ "$variable" == *subString* ]]  #this returns true if the provided substring is in the variable
-if [[ "$variable" != *subString* ]]  #this returns true if the provided substring is not in the variable
-if [[ "$variable" == subString* ]]   #this returns true if the variable starts with the given subString
-if [[ "$variable" == *subString ]]   #this returns true if the variable ends with the given subString
+${variable,,}    # convierte todas las letras de la variable a minúsculas
+${variable^^}    # convierte todas las letras de la variable a mayúsculas
+
+${variable:2:8}  # retorna una subcadena que comienza en el índice 2 (las cadenas comienzan en el índice 0, por lo que este es el 3er carácter)
+                 # y tiene 8 caracteres de longitud, retornando así los caracteres del 3ro al 11ro
 ```
 
+Algunos trucos útiles para coincidencia de patrones:
+```bash
+if [[ "$variable" == *subCadena* ]]  # retorna verdadero si la subcadena está en la variable
+if [[ "$variable" != *subCadena* ]]  # retorna verdadero si la subcadena no está en la variable
+if [[ "$variable" == subCadena* ]]   # retorna verdadero si la variable comienza con la subCadena dada
+if [[ "$variable" == *subCadena ]]   # retorna verdadero si la variable termina con la subCadena dada
+```
 
-The above can be shortened using a case statement and the IN keyword
+Lo anterior puede abreviarse usando una sentencia `case` con la palabra clave `IN`:
 ```bash
 case "$var" in
-	begin*)
-		#variable begins with "begin"
+	inicio*)
+		# la variable comienza con "inicio"
 	;;
-	*subString*)
-		#subString is in variable
+	*subCadena*)
+		# subCadena está en la variable
 	;;
 
-	*otherSubString*)
-		#otherSubString is in variable
+	*otraSubCadena*)
+		# otraSubCadena está en la variable
 	;;
 esac
 ```
 
-## 2.5. Functions
-As in almost any programming language, you can use functions to group pieces of code in a more logical way or practice the divine art of recursion. Declaring a function is just a matter of writing function my_func { my_code }. Calling a function is just like calling another program, you just write its name.
+## 2.5. Funciones
+
+Al igual que en casi cualquier lenguaje de programación, puedes usar funciones para agrupar fragmentos de código de forma lógica o para practicar el arte de la recursión. Declarar una función es tan simple como escribir `function mi_funcion { mi_codigo }`. Llamar a una función es igual que llamar a cualquier otro programa: solo escribe su nombre.
 
 ```bash
-function name() {
-    shell commands
+function nombre() {
+    comandos de shell
 }
 ```
 
-Example:
+Ejemplo:
 ```bash
 #!/bin/bash
-function hello {
-   echo world!
+function hola {
+   echo mundo!
 }
-hello
+hola
 
-function say {
+function decir {
     echo $1
 }
-say "hello world!"
+decir "hola mundo!"
 ```
 
-When you run the above example the `hello` function will output "world!". The above two functions `hello` and `say` are identical. The main difference is function `say`. This function, prints the first argument it receives. Arguments, within functions, are treated in the same manner as arguments given to the script.
+Al ejecutar el ejemplo anterior, la función `hola` mostrará "mundo!". Las funciones `hola` y `decir` son similares. La diferencia principal está en `decir`: esta función imprime el primer argumento que recibe. Los argumentos dentro de funciones se tratan de la misma manera que los argumentos dados al script.
 
-## 2.6. Conditionals
+## 2.6. Condicionales
 
-The conditional statement in bash is similar to other programming languages. Conditions have many form like the most basic form is `if` expression `then` statement where statement is only executed if expression is true.
+Los condicionales en bash son similares a otros lenguajes de programación. La forma más básica es `if` expresión `then` sentencia, donde la sentencia solo se ejecuta si la expresión es verdadera.
 
 ```bash
-if [ expression ]; then
-    will execute only if expression is true
+if [ expresión ]; then
+    se ejecuta solo si la expresión es verdadera
 else
-    will execute if expression is false
+    se ejecuta si la expresión es falsa
 fi
 ```
 
-Sometime if conditions becoming confusing so you can write the same condition using the `case statements`.
+A veces los `if` se vuelven confusos; puedes escribir la misma condición usando `case`:
 
 ```bash
-case expression in
-    pattern1 )
-        statements ;;
-    pattern2 )
-        statements ;;
+case expresión in
+    patrón1 )
+        sentencias ;;
+    patrón2 )
+        sentencias ;;
     ...
 esac
 ```
 
-Expression Examples:
+Ejemplos de expresiones:
 
 ```bash
-statement1 && statement2  # both statements are true
-statement1 || statement2  # at least one of the statements is true
+sentencia1 && sentencia2  # ambas sentencias son verdaderas
+sentencia1 || sentencia2  # al menos una de las sentencias es verdadera
 
-str1=str2       # str1 matches str2
-str1!=str2      # str1 does not match str2
-str1<str2       # str1 is less than str2
-str1>str2       # str1 is greater than str2
--n str1         # str1 is not null (has length greater than 0)
--z str1         # str1 is null (has length 0)
+str1=str2       # str1 coincide con str2
+str1!=str2      # str1 no coincide con str2
+str1<str2       # str1 es menor que str2
+str1>str2       # str1 es mayor que str2
+-n str1         # str1 no es nulo (tiene longitud mayor que 0)
+-z str1         # str1 es nulo (tiene longitud 0)
 
--a file         # file exists
--d file         # file exists and is a directory
--e file         # file exists; same -a
--f file         # file exists and is a regular file (i.e., not a directory or other special type of file)
--r file         # you have read permission
--s file         # file exists and is not empty
--w file         # you have write permission
--x file         # you have execute permission on file, or directory search permission if it is a directory
--N file         # file was modified since it was last read
--O file         # you own file
--G file         # file's group ID matches yours (or one of yours, if you are in multiple groups)
+-a archivo      # el archivo existe
+-d archivo      # el archivo existe y es un directorio
+-e archivo      # el archivo existe; igual que -a
+-f archivo      # el archivo existe y es un archivo regular (no un directorio u otro tipo especial)
+-r archivo      # tienes permiso de lectura
+-s archivo      # el archivo existe y no está vacío
+-w archivo      # tienes permiso de escritura
+-x archivo      # tienes permiso de ejecución sobre el archivo, o permiso de búsqueda si es un directorio
+-N archivo      # el archivo fue modificado desde la última vez que se leyó
+-O archivo      # eres el propietario del archivo
+-G archivo      # el ID de grupo del archivo coincide con el tuyo (o uno de los tuyos, si perteneces a múltiples grupos)
 
-file1 -nt file2     # file1 is newer than file2
-file1 -ot file2     # file1 is older than file2
+archivo1 -nt archivo2     # archivo1 es más reciente que archivo2
+archivo1 -ot archivo2     # archivo1 es más antiguo que archivo2
 
--lt     # less than
--le     # less than or equal
--eq     # equal
--ge     # greater than or equal
--gt     # greater than
--ne     # not equal
+-lt     # menor que
+-le     # menor o igual que
+-eq     # igual a
+-ge     # mayor o igual que
+-gt     # mayor que
+-ne     # no igual a
 ```
 
-## 2.7. Loops
+## 2.7. Bucles
 
-There are three types of loops in bash. `for`, `while` and `until`.
+Hay tres tipos de bucles en bash: `for`, `while` y `until`.
 
-Different `for` Syntax:
+Sintaxis de `for`:
 ```bash
-for name [in list]
+for nombre [in lista]
 do
-  statements that can use $name
+  sentencias que pueden usar $nombre
 done
 
-for (( initialisation ; ending condition ; update ))
+for (( inicialización ; condición_final ; actualización ))
 do
-  statements...
+  sentencias...
 done
 ```
 
-`while` Syntax:
+Sintaxis de `while`:
 ```bash
-while condition; do
-  statements
+while condición; do
+  sentencias
 done
 ```
 
-`until` Syntax:
+Sintaxis de `until`:
 ```bash
-until condition; do
-  statements
+until condición; do
+  sentencias
 done
 ```
 
-# 2.8. Regex
+# 2.8. Expresiones Regulares
 
-They are a powerful tool for manipulating and searching text. Here are some examples of regular expressions that use each `metacharacter`:
+Son una herramienta poderosa para manipular y buscar texto. Aquí hay ejemplos de expresiones regulares que usan cada `metacarácter`:
 
 <table>
    <tr>
-      <td><a href="#a-dot">`.`(dot)</a></td>
-      <td><a href="#b-asterisk">`*`(asterisk)</a></td>
-      <td><a href="#c-plus">`+`(plus)</a></td>
-      <td><a href="#d-question_mark">`?`(question mark)</a></td>
-      <td><a href="#c-plus">`|`(pipe)</a></td>
-      <td><a href="#c-plus">`[]`(character class)</a></td>
-      <td><a href="#c-plus">`[^]`(negated character class)</a></td>
-      <td><a href="#c-plus">`()`(grouping)</a></td>
-      <td><a href="#c-plus">`{}`(quantifiers)</a></td>
+      <td><a href="#a-dot">`.`(punto)</a></td>
+      <td><a href="#b-asterisk">`*`(asterisco)</a></td>
+      <td><a href="#c-plus">`+`(más)</a></td>
+      <td><a href="#d-question_mark">`?`(signo de interrogación)</a></td>
+      <td><a href="#c-plus">`|`(tubería)</a></td>
+      <td><a href="#c-plus">`[]`(clase de caracteres)</a></td>
+      <td><a href="#c-plus">`[^]`(clase de caracteres negada)</a></td>
+      <td><a href="#c-plus">`()`(agrupación)</a></td>
+      <td><a href="#c-plus">`{}`(cuantificadores)</a></td>
       <td><a href="#c-plus">`\`(escape)</a></td>
    </tr>
 </table>
 
-### a. `.` (dot)
-Matches any single character except newline.  
+### a. `.` (punto)
+Coincide con cualquier carácter individual excepto el salto de línea.  
 ```bash
-grep h.t file.txt
+grep h.t archivo.txt
 ```
-Output:
+Salida:
 ```bash
 hat
 hot
 hit
 ```
 
-### b. `*` (asterisk)
-Matches zero or more occurrences of the preceding character or group.
+### b. `*` (asterisco)
+Coincide con cero o más ocurrencias del carácter o grupo anterior.
 ```bash
-grep ab*c file.txt
+grep ab*c archivo.txt
 ```
-Output:
+Salida:
 ```bash
 ac
 abc
@@ -1237,12 +1239,12 @@ abbc
 abbbc
 ```
 
-### c. `+` (plus)
-Matches one or more occurrences of the preceding character or group.
+### c. `+` (más)
+Coincide con una o más ocurrencias del carácter o grupo anterior.
 ```bash
-grep ab+c file.txt
+grep ab+c archivo.txt
 ```
-Output:
+Salida:
 ```bash
 abc
 abbc
@@ -1250,62 +1252,62 @@ abbbc
 abbbbc
 ```
 
-### d. `?` (question mark)
-Matches zero or one occurrence of the preceding character or group.
+### d. `?` (signo de interrogación)
+Coincide con cero o una ocurrencia del carácter o grupo anterior.
 ```bash
-grep ab?c file.txt
+grep ab?c archivo.txt
 ```
-Output:
+Salida:
 ```bash
 ac
 abc
 ```
 
-### e. `|` (pipe)
-Matches either the pattern to the left or the pattern to the right.
+### e. `|` (tubería/pipe)
+Coincide con el patrón a la izquierda o el patrón a la derecha.
 ```bash
-egrep "cat|dog" file.txt
+egrep "cat|dog" archivo.txt
 ```
-Output:
+Salida:
 ```bash
 cat
 dog
 ```
 
-### f. `[]` (character class)
-Matches any character inside the brackets.
+### f. `[]` (clase de caracteres)
+Coincide con cualquier carácter dentro de los corchetes.
 ```bash
-[aeiou] will match any vowel
-[a-z] will match any lowercase letter
+[aeiou]   # coincide con cualquier vocal
+[a-z]     # coincide con cualquier letra minúscula
 ```
 
-### g. `[]` (negated character class)
-Matches any character not inside the brackets.
+### g. `[^]` (clase de caracteres negada)
+Coincide con cualquier carácter que NO esté dentro de los corchetes.
 ```bash
-[^aeiou] will match any consonant
-[^a-z] will match any non-lowercase letter
+[^aeiou]  # coincide con cualquier consonante
+[^a-z]    # coincide con cualquier carácter que no sea minúscula
 ```
 
-### h. `()` (grouping)
-Groups multiple tokens together and creates a capture group.
+### h. `()` (agrupación)
+Agrupa múltiples elementos y crea un grupo de captura.
 ```bash
-egrep "(ab)+" file.txt
+egrep "(ab)+" archivo.txt
 ```
 
-Output:
+Salida:
 ```bash
 ab
 abab
 ababab
 ```
 
-### i. `{}` (quantifiers)
-Matches a specific number of occurrences of the preceding character or group.
+### i. `{}` (cuantificadores)
+Coincide con un número específico de ocurrencias del carácter o grupo anterior.
 ```bash
-egrep "a{3}" file.txt
+egrep "a{3}" archivo.txt
 ```
 
-Output:
+Salida:
 ```bash
 aaa
 aaaa
@@ -1313,127 +1315,130 @@ aaaaa
 ```
 
 ### j. `\` (escape)
-Escapes the next character to match it literally.
+Escapa el siguiente carácter para buscarlo de forma literal.
 ```bash
-egrep "a\+" file.txt
+egrep "a\+" archivo.txt
 ```
 
-Output:
+Salida:
 ```bash
 a+
 ```
-=======
-## 2.9. Pipes
 
-Multiple commands can be linked together with a pipe, `|`. A `|` will send the standard-output from command A to the standard-input of command B.
-Pipes can also be constructed with the `|&` symbols. This will send the standard-output **and** standard-error from command A to the standard-input of command B.
+## 2.9. Tuberías (Pipes)
 
-# 3. Tricks
+Múltiples comandos pueden encadenarse con una tubería, `|`. El símbolo `|` envía la salida estándar del comando A hacia la entrada estándar del comando B.  
+Las tuberías también pueden construirse con los símbolos `|&`. Esto envía tanto la salida estándar **como** el error estándar del comando A hacia la entrada estándar del comando B.
 
-## Set an alias
+# 3. Trucos
 
-Run `nano ~/.bash_profile` and add the following line:
+## Crear un alias
+
+Ejecuta `nano ~/.bash_profile` y agrega la siguiente línea:
 
 ```bash
-alias dockerlogin='ssh www-data@adnan.local -p2222'  # add your alias in .bash_profile
+alias dockerlogin='ssh www-data@adnan.local -p2222'  # agrega tu alias en .bash_profile
 ```
 
-## To quickly go to a specific directory
+## Ir rápidamente a un directorio específico
 
-Run `nano ~/.bashrc` and add the following line:
+Ejecuta `nano ~/.bashrc` y agrega la siguiente línea:
 
 ```bash
 export hotellogs="/workspace/hotel-api/storage/logs"
 ```
 
-Now you can use the saved path:
+Ahora puedes usar la ruta guardada:
 
 ```bash
 source ~/.bashrc
 cd $hotellogs
 ```
 
-## Re-execute the previous command
+## Repetir el último comando
 
-This goes back to the days before you could rely on keyboards to have an "up" arrow key, but can still be useful. 
-To run the last command in your history
+Esto viene de los tiempos en que los teclados no tenían flecha hacia arriba, pero aún puede ser útil.  
+Para ejecutar el último comando de tu historial:
 ```bash
 !!
 ```
-A common error is to forget to use `sudo` to prefix a command requiring privileged execution. Instead of typing the whole command again, you can:
+Un error común es olvidar usar `sudo` antes de un comando que requiere privilegios. En lugar de escribir todo el comando de nuevo, puedes hacer:
 ```bash
 sudo !!
 ```
-This would change a `mkdir somedir` into `sudo mkdir somedir`.
+Esto convertiría un `mkdir algundirectorio` en `sudo mkdir algundirectorio`.
 
-## Exit traps
+## Trampas de salida (Exit traps)
 
-Make your bash scripts more robust by reliably performing cleanup.
+Haz tus scripts de bash más robustos ejecutando limpieza de forma confiable al finalizar.
 
 ```bash
-function finish {
-  # your cleanup here. e.g. kill any forked processes
+function finalizar {
+  # tu limpieza aquí, ej. matar procesos bifurcados
   jobs -p | xargs kill
 }
-trap finish EXIT
+trap finalizar EXIT
 ```
 
-## Saving your environment variables
+## Guardar variables de entorno
 
-When you do `export FOO = BAR`, your variable is only exported in this current shell and all its children, to persist in the future you can simply append in your `~/.bash_profile` file the command to export your variable
+Cuando ejecutas `export FOO=BAR`, tu variable solo se exporta en el shell actual y sus procesos hijos. Para que persista en el futuro, agrega el comando de exportación en tu archivo `~/.bash_profile`:
 ```bash
 echo export FOO=BAR >> ~/.bash_profile
 ```
 
-## Accessing your scripts
+## Acceder a tus scripts
 
-You can easily access your scripts by creating a bin folder in your home with `mkdir ~/bin`, now all the scripts you put in this folder you can access in any directory.
+Puedes acceder fácilmente a tus scripts creando una carpeta `bin` en tu directorio de inicio con `mkdir ~/bin`. Todos los scripts que coloques allí estarán disponibles desde cualquier directorio.
 
-If you can not access, try append the code below in your `~/.bash_profile` file and after do `source ~/.bash_profile`.
+Si no puedes acceder a ellos, agrega el siguiente código en tu `~/.bash_profile` y luego ejecuta `source ~/.bash_profile`:
 ```bash
-# set PATH so it includes user's private bin if it exists
+# agrega el directorio bin privado del usuario al PATH si existe
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 ```
 
-# 4. Debugging
-You can easily debug the bash script by passing different options to `bash` command. For example `-n` will not run commands and check for syntax errors only. `-v` echo commands before running them. `-x` echo commands after command-line processing.
+# 4. Depuración
+
+Puedes depurar fácilmente un script de bash pasando distintas opciones al comando `bash`. Por ejemplo, `-n` no ejecuta los comandos y solo verifica errores de sintaxis. `-v` muestra los comandos antes de ejecutarlos. `-x` muestra los comandos después del procesamiento de la línea de comandos.
 
 ```bash
-bash -n scriptname
-bash -v scriptname
-bash -x scriptname
+bash -n nombre_script
+bash -v nombre_script
+bash -x nombre_script
 ```
 
 # 5. Multi-threading
-You can easily multi-threading your jobs using `&`. All those jobs will then run in the background simultaneously and you can see the processes below are running using `jobs`.
+
+Puedes ejecutar tareas en paralelo fácilmente usando `&`. Todos esos trabajos se ejecutarán en segundo plano simultáneamente y puedes ver los procesos en ejecución con `jobs`.
 
 ```bash
 sleep 15 & sleep 5 &
 ```
 
-The optional `wait` command will then wait for all the jobs to finish.
+El comando opcional `wait` esperará a que todos los trabajos terminen.
 
 ```bash
 sleep 10 & sleep 5 &
 wait
 ```
 
-## Contribution
+## Contribución
 
-- Report issues [How to](https://help.github.com/articles/creating-an-issue/)
-- Open pull request with improvements [How to](https://help.github.com/articles/about-pull-requests/)
-- Spread the word
+- Reportar problemas: [Cómo hacerlo](https://help.github.com/articles/creating-an-issue/)
+- Abrir un pull request con mejoras: [Cómo hacerlo](https://help.github.com/articles/about-pull-requests/)
+- Difundir el conocimiento
 
-## Translation
-- [Chinese | 简体中文](https://github.com/vuuihc/bash-guide)
-- [Turkish | Türkçe](https://github.com/omergulen/bash-guide)
-- [Japanese | 日本語](https://github.com/itooww/bash-guide)
-- [Russian | Русский](https://github.com/navinweb/bash-guide)
-- [Vietnamese | Tiếng Việt](https://github.com/nguyenvanhieuvn/hoc-bash)
-- [Spanish | Español](https://github.com/mariotristan/bash-guide)
+## Traducciones
 
-## License
+- [Chino | 简体中文](https://github.com/vuuihc/bash-guide)
+- [Turco | Türkçe](https://github.com/omergulen/bash-guide)
+- [Japonés | 日本語](https://github.com/itooww/bash-guide)
+- [Ruso | Русский](https://github.com/navinweb/bash-guide)
+- [Vietnamita | Tiếng Việt](https://github.com/nguyenvanhieuvn/hoc-bash)
+- [Español | Spanish](https://github.com/orellanaignaciod-stack/bash-guide)
+
+## Licencia
 
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
