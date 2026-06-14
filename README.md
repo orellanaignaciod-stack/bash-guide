@@ -2,6 +2,8 @@
   <img src="https://cloud.githubusercontent.com/assets/2059754/24601246/753a7f36-1858-11e7-9d6b-7a0e64fb27f7.png" alt="bash logo"/>
 </p>
 
+> 🌐 **¿Hablas español?** Consulta la [Guía de Bash en Español](./README.es.md) — traducción completa y actualizada.
+
 ## Table of Contents
   1. [Basic Operations](#1-basic-operations)  
     1.1. [File Operations](#11-file-operations)  
