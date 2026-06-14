@@ -1432,7 +1432,8 @@ wait
 - [Japanese | 日本語](https://github.com/itooww/bash-guide)
 - [Russian | Русский](https://github.com/navinweb/bash-guide)
 - [Vietnamese | Tiếng Việt](https://github.com/nguyenvanhieuvn/hoc-bash)
-- [Spanish | Español](https://github.com/mariotristan/bash-guide)
+- [Spanish | Español (incompleta)](https://github.com/mariotristan/bash-guide)
+- [Spanish | Español (completa)](https://github.com/orellanaignaciod-stack/bash-guide)
 
 ## License
 
